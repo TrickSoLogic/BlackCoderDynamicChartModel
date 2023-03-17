@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div>
+    <div id="chartContainer" style="height: 400px; width: 60%;"></div>
+</div>
+
+<script type="text/javascript">
+
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: " Dynamic Chart Example "              
+		},
+		data: [              
+		{
+			//  you can Change type to "doughnut", "line", "splineArea", etc.
+					type: "splineArea",
+			dataPoints:
+			@Html.Raw(ViewBag.Data)
+			[
+				{ label: "apple",  y: 10  },
+				{ label: "orange", y: 15  },
+				{ label: "banana", y: 25  },
+				{ label: "mango",  y: 30  },
+				{ label: "grape",  y: 28  }
+			]
+		}
+		]
+	});
+	chart.render();
+}
+</script>
